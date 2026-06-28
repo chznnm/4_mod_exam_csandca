@@ -30,7 +30,6 @@ class TestAuth:
         assert get_user_info_response["email"] == auth_response["user"]["email"]
         assert get_user_info_response["id"] == auth_response["user"]["id"]
 
-
     def test_register_timeout(self, api_manager, test_user):
         with pytest.raises(requests.exceptions.Timeout):
             api_manager.auth_api.register_user(test_user, timeout=0.1)
