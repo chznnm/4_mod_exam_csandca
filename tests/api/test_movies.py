@@ -1,7 +1,4 @@
-from http.client import responses
 
-import pytest
-import requests
 from  tests.helpers.assertions import assert_movie_data_matches,assert_review_data_matches
 from data.movie.movie_data import generate_edited_movie_data, generate_edited_review_data
 
@@ -52,8 +49,9 @@ class TestMoviesSuccessful:
 class TestReviewsSuccessful:
 
     #Получение отзывов фильма по ID
-    def test_get_all_reviews(self,api_manager):
-        api_manager.movies_api.get_reviews_by_movie_id(movie_id=582)
+    def test_get_all_reviews(self,api_manager,create_new_movie):
+        created_movie_id = create_new_movie.get('id')
+        api_manager.movies_api.get_reviews_by_movie_id(created_movie_id)
 
     #Создание отзыва к фильму
     def test_create_review(self,api_manager,create_new_review,test_review):
@@ -154,26 +152,25 @@ class TestMoviesNegative:
         response = api_manager.movies_api.get_movie_by_id(-1,expected_status=404)
         error_data = response.json()
         assert "message" in error_data
-        assert "statusCode" in error_data
-        assert error_data["message"] == "Not Found", f"Unexpected message: {error_data["message"]}"
-        assert error_data["statusCode"] == 404, f"Unexpected status-code: {error_data["statusCode"]}"
+        assert "error" in error_data
+        assert error_data["message"] == "Фильм не найден", f"Unexpected message: {error_data["message"]}"
+        assert error_data["error"] == "Not Found", f"Unexpected error: {error_data["error"]}"
 
     # Удалениие фильма по ID, с отрицательным ID
     def test_delete_movie_by_id_with_negative_id(self,api_manager,authenticated_admin):
         response = api_manager.movies_api.delete_movie_by_id(-1,expected_status=404)
         error_data = response.json()
         assert "message" in error_data
-        assert "statusCode" in error_data
-        assert error_data["message"] == "Not Found", f"Unexpected message: {error_data["message"]}"
-        assert error_data["statusCode"] == 404, f"Unexpected status-code: {error_data["statusCode"]}"
+        assert "error" in error_data
+        assert error_data["message"] == "Фильм не найден", f"Unexpected message: {error_data["message"]}"
+        assert error_data["error"] == "Not Found", f"Unexpected error: {error_data["error"]}"
+
 
     # Редактирование фильма по ID, с отрицательным ID
     def test_edit_movie_by_id_with_negative_id(self,api_manager,authenticated_admin):
         response = api_manager.movies_api.edit_movie_by_id(-1,data= {},expected_status=404)
         error_data = response.json()
         assert "message" in error_data
-        assert "statusCode" in error_data
         assert "error" in error_data
         assert error_data["message"] == "Фильм не найден", f"Unexpected message: {error_data["message"]}"
-        assert error_data["statusCode"] == 404, f"Unexpected status-code: {error_data["statusCode"]}"
         assert error_data["error"] == "Not Found", f"Unexpected error: {error_data["error"]}"

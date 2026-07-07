@@ -94,6 +94,8 @@ def create_new_review(api_manager,test_review,create_new_movie):
     created_movie_id = create_new_movie.get("id")
     return api_manager.movies_api.create_review_for_movie(created_movie_id,test_review).json()
 
+
+
 @pytest.fixture()
 def test_genre():
     return {
@@ -101,5 +103,12 @@ def test_genre():
     }
 @pytest.fixture()
 def create_new_genre(api_manager,test_genre,authenticated_admin):
-    return api_manager.movies_api.create_new_genre(test_genre).json()
+    response =  api_manager.movies_api.create_new_genre(test_genre).json()
+    genre_id = response.get('id')
+    yield response
+    try:
+        api_manager.movies_api.delete_genre_by_id(genre_id)
+    except ValueError:
+        pass
+
 

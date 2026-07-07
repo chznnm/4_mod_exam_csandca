@@ -44,7 +44,7 @@ class DataGenerator:
 
     @staticmethod
     def generate_random_rating():
-        return faker.random_int(min=1,max=10)
+        return faker.random_int(min=1,max=5)
 
     @staticmethod
     def generate_random_text_for_review():
