@@ -359,3 +359,4 @@ class TestMoviesNegative:
     def test_create_movie_by_common_user(self,common_user,test_movie):
         with allure.step("Отправляем запрос и проверяем статус код"):
             response = common_user.api.movies_api.create_movie(test_movie,expected_status=403)
+
