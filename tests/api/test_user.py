@@ -1,4 +1,3 @@
-
 from models.base_models import RegisterUserResponse
 
 
@@ -46,3 +45,11 @@ class TestUserNegative:
         common_user.api.user_api.get_user_info(common_user.email, expected_status=403)
 
         #Проверки корректности ошибки
+
+
+    def test_db_requests(self, super_admin, db_helper, created_test_user):
+        super_admin.api.user_api.get_user_info(created_test_user.id)
+        created_test_user.full_name = "egor"
+        db_helper.db_session.commit()
+        assert created_test_user == db_helper.get_user_by_id(created_test_user.id)
+        assert db_helper.user_exists_by_email("api1@gmail.com")

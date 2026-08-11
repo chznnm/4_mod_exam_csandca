@@ -34,3 +34,31 @@ class RegisterUserResponse(BaseModel):
     verified: bool
     roles: list[Roles]
     createdAt: datetime
+
+class ReviewModel(BaseModel):
+    userId: str
+    rating: int
+    text: str
+    createdAt: str
+    user: dict[str,str]
+
+class MoviesModel(BaseModel):
+    id: int
+    name: str
+    price: float
+    description: str
+    imageUrl: str
+    location: str
+    published: bool
+    genreId: int
+    genre: dict[str,str]
+    createdAt:str
+    rating:int
+    reviews: Optional[list[ReviewModel]] = None
+
+class GetMoviesResponseModel(BaseModel):
+    movies:list[MoviesModel]
+    count: int
+    page: int
+    pageSize: int
+    pageCount: int

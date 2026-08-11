@@ -1,0 +1,129 @@
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_movie_by_id (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Antonio Carpenter",
+        "createdAt": "2026-07-29T14:41:41.311Z",
+        "verified": true,
+        "banned": false,
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ3LCJleHAiOjE3ODYyMTg4NDd9.IoLn_fJIvZY2b6qQ_22o_RHAn2tUzRrj5ryi4chGWc0",
+    "expiresIn": 1786218847240
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_movie_by_id (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ3LCJleHAiOjE3ODYyMTg4NDd9.IoLn_fJIvZY2b6qQ_22o_RHAn2tUzRrj5ryi4chGWc0' \
+-H 'Content-Length: 350' \
+-d '{"name": "\u041f\u0440\u043e\u0448\u0435\u043f\u0442\u0430\u0442\u044c.", "imageUrl": "https://oao.info/", "price": 191, "description": "\u041f\u043e\u043b\u043d\u044b\u0439 \u0438 \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u043c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440", "location": "SPB", "published": true, "genreId": 6}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 69204,
+    "name": "Прошептать.",
+    "price": 191,
+    "description": "Полный и социальный модератор",
+    "imageUrl": "https://oao.info/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 6,
+    "createdAt": "2026-08-08T19:24:07.763Z",
+    "genre": {
+        "name": "Стримы_Мэда"
+    }
+}
+================================================================================
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_movie_by_id[0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/69204' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 69204,
+    "name": "Прошептать.",
+    "price": 191,
+    "description": "Полный и социальный модератор",
+    "imageUrl": "https://oao.info/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 6,
+    "createdAt": "2026-08-08T19:24:07.763Z",
+    "reviews": [],
+    "genre": {
+        "name": "Стримы_Мэда"
+    }
+}
+================================================================================
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_movie_by_id (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/69204' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ3LCJleHAiOjE3ODYyMTg4NDd9.IoLn_fJIvZY2b6qQ_22o_RHAn2tUzRrj5ryi4chGWc0' \
+-H 'Content-Length: 0' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 69204,
+    "name": "Прошептать.",
+    "price": 191,
+    "description": "Полный и социальный модератор",
+    "imageUrl": "https://oao.info/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 6,
+    "createdAt": "2026-08-08T19:24:07.763Z",
+    "reviews": [],
+    "genre": {
+        "name": "Стримы_Мэда"
+    }
+}
+================================================================================
