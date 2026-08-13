@@ -9,7 +9,7 @@ class MoviesDBModel(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    price = Column(Float)
+    price = Column(Integer)
     description = Column(String)
     image_url = Column(String)
     location = Column(String)

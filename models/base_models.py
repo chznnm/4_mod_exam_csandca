@@ -52,8 +52,8 @@ class MoviesModel(BaseModel):
     published: bool
     genreId: int
     genre: dict[str,str]
-    createdAt:str
-    rating:int
+    createdAt: str
+    rating: float
     reviews: Optional[list[ReviewModel]] = None
 
 class GetMoviesResponseModel(BaseModel):
