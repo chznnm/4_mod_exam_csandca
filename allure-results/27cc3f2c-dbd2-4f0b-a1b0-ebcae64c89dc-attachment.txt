@@ -1,0 +1,246 @@
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Antonio Carpenter",
+        "createdAt": "2026-07-29T14:41:41.311Z",
+        "verified": true,
+        "banned": false,
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ5LCJleHAiOjE3ODYyMTg4NDl9.3tbb5-__JMPvu1sLg71oEJ5WUGJReV_t_pqXTOJcTFM",
+    "expiresIn": 1786218849718
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ5LCJleHAiOjE3ODYyMTg4NDl9.3tbb5-__JMPvu1sLg71oEJ5WUGJReV_t_pqXTOJcTFM' \
+-H 'Content-Length: 408' \
+-d '{"name": "\u041f\u0440\u043e\u0448\u0435\u043f\u0442\u0430\u0442\u044c \u043a\u043e\u0440\u043e\u0431\u043a\u0430.", "imageUrl": "https://www.oao.org/", "price": 474, "description": "\u041f\u0440\u043e\u0447\u043d\u0430\u044f \u0438 \u043c\u043e\u0434\u0443\u043b\u044c\u043d\u0430\u044f \u043c\u0435\u0442\u043e\u0434\u043e\u043b\u043e\u0433\u0438\u044f", "location": "SPB", "published": true, "genreId": 8}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": 69206,
+    "name": "Прошептать коробка.",
+    "price": 474,
+    "description": "Прочная и модульная методология",
+    "imageUrl": "https://www.oao.org/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 8,
+    "createdAt": "2026-08-08T19:24:10.173Z",
+    "genre": {
+        "name": "Фэнтези"
+    }
+}
+================================================================================
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403][0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/user' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ5LCJleHAiOjE3ODYyMTg4NDl9.3tbb5-__JMPvu1sLg71oEJ5WUGJReV_t_pqXTOJcTFM' \
+-H 'Cookie: refresh_token=7022965b-f9ed-4469-b276-fb3a57d5b18c' \
+-H 'Content-Length: 303' \
+-d '{"email": "tretjakovkondrat@example.org", "fullName": "\u0412\u0430\u0441\u0438\u043b\u0438\u0439 \u0424\u0430\u0434\u0435\u0435\u0432\u0438\u0447 \u0413\u043e\u0440\u0448\u043a\u043e\u0432", "password": "5t&04JGsyv", "passwordRepeat": "5t&04JGsyv", "roles": ["USER"], "verified": true, "banned": false}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m201[0m
+	DATA:
+{
+    "id": "a82c6344-736e-4846-9a95-10dd595b1495",
+    "email": "tretjakovkondrat@example.org",
+    "fullName": "Василий Фадеевич Горшков",
+    "verified": true,
+    "banned": false,
+    "roles": [
+        "USER"
+    ],
+    "createdAt": "2026-08-08T19:24:10.516Z"
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403][0m
+curl -X PATCH 'https://auth.dev-cinescope.coconutqa.ru/user/a82c6344-736e-4846-9a95-10dd595b1495' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ5LCJleHAiOjE3ODYyMTg4NDl9.3tbb5-__JMPvu1sLg71oEJ5WUGJReV_t_pqXTOJcTFM' \
+-H 'Cookie: refresh_token=7022965b-f9ed-4469-b276-fb3a57d5b18c' \
+-H 'Content-Length: 20' \
+-d '{"roles": ["ADMIN"]}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "email": "tretjakovkondrat@example.org",
+    "fullName": "Василий Фадеевич Горшков",
+    "verified": true,
+    "banned": false,
+    "roles": [
+        "ADMIN"
+    ],
+    "createdAt": "2026-08-08T19:24:10.516Z"
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403][0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 67' \
+-d '{"email": "tretjakovkondrat@example.org", "password": "5t&04JGsyv"}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "user": {
+        "id": "a82c6344-736e-4846-9a95-10dd595b1495",
+        "email": "tretjakovkondrat@example.org",
+        "fullName": "Василий Фадеевич Горшков",
+        "createdAt": "2026-08-08T19:24:10.516Z",
+        "verified": true,
+        "banned": false,
+        "roles": [
+            "ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4MmM2MzQ0LTczNmUtNDg0Ni05YTk1LTEwZGQ1OTViMTQ5NSIsImVtYWlsIjoidHJldGpha292a29uZHJhdEBleGFtcGxlLm9yZyIsInJvbGVzIjpbIkFETUlOIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODYyMTcwNTEsImV4cCI6MTc4NjIxODg1MX0.cbIOM2NcQ5UJ5tAr1-rGjNbwCIuylZ7LZDaKcm2UkzY",
+    "expiresIn": 1786218851317
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403][0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/69206' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4MmM2MzQ0LTczNmUtNDg0Ni05YTk1LTEwZGQ1OTViMTQ5NSIsImVtYWlsIjoidHJldGpha292a29uZHJhdEBleGFtcGxlLm9yZyIsInJvbGVzIjpbIkFETUlOIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODYyMTcwNTEsImV4cCI6MTc4NjIxODg1MX0.cbIOM2NcQ5UJ5tAr1-rGjNbwCIuylZ7LZDaKcm2UkzY' \
+-H 'Content-Length: 0' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [31m403[0m
+	DATA: [31m{
+    "message": "Forbidden resource",
+    "error": "Forbidden",
+    "statusCode": 403
+}[0m
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies/69206' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE4MmM2MzQ0LTczNmUtNDg0Ni05YTk1LTEwZGQ1OTViMTQ5NSIsImVtYWlsIjoidHJldGpha292a29uZHJhdEBleGFtcGxlLm9yZyIsInJvbGVzIjpbIkFETUlOIl0sInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE3ODYyMTcwNTEsImV4cCI6MTc4NjIxODg1MX0.cbIOM2NcQ5UJ5tAr1-rGjNbwCIuylZ7LZDaKcm2UkzY' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 69206,
+    "name": "Прошептать коробка.",
+    "price": 474,
+    "description": "Прочная и модульная методология",
+    "imageUrl": "https://www.oao.org/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 8,
+    "createdAt": "2026-08-08T19:24:10.173Z",
+    "reviews": [],
+    "genre": {
+        "name": "Фэнтези"
+    }
+}
+================================================================================
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[admin-403] (teardown)[0m
+curl -X DELETE 'https://api.dev-cinescope.coconutqa.ru/movies/69206' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDQ5LCJleHAiOjE3ODYyMTg4NDl9.3tbb5-__JMPvu1sLg71oEJ5WUGJReV_t_pqXTOJcTFM' \
+-H 'Content-Length: 0' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "id": 69206,
+    "name": "Прошептать коробка.",
+    "price": 474,
+    "description": "Прочная и модульная методология",
+    "imageUrl": "https://www.oao.org/",
+    "location": "SPB",
+    "published": true,
+    "rating": 0,
+    "genreId": 8,
+    "createdAt": "2026-08-08T19:24:10.173Z",
+    "reviews": [],
+    "genre": {
+        "name": "Фэнтези"
+    }
+}
+================================================================================

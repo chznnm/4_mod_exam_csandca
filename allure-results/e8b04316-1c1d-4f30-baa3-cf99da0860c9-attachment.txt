@@ -1,0 +1,206 @@
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_all_movies_with_parametrize[501-1000-locations1-5] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Antonio Carpenter",
+        "createdAt": "2026-07-29T14:41:41.311Z",
+        "verified": true,
+        "banned": false,
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDU2LCJleHAiOjE3ODYyMTg4NTZ9.mdLbPk7tSwl00pyAxCluL6Gb1L8_BLcKUgrKrLIXdi4",
+    "expiresIn": 1786218856429
+}
+================================================================================
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_get_all_movies_with_parametrize[501-1000-locations1-5][0m
+curl -X GET 'https://api.dev-cinescope.coconutqa.ru/movies?minPrice=501&maxPrice=1000&locations=SPB&genreId=5' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDU2LCJleHAiOjE3ODYyMTg4NTZ9.mdLbPk7tSwl00pyAxCluL6Gb1L8_BLcKUgrKrLIXdi4' \
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "movies": [
+        {
+            "id": 33444,
+            "name": "weight system pattern",
+            "description": "Memory get reach break put pass. Campaign here finish television floor four.",
+            "genreId": 5,
+            "imageUrl": "https://dummyimage.com/200x200",
+            "price": 741,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-04-11T12:13:41.917Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 33445,
+            "name": "run campaign issue",
+            "description": "Difference we think happy democratic nice late. Stop heavy glass price key good few.",
+            "genreId": 5,
+            "imageUrl": "https://placekitten.com/200/200",
+            "price": 624,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-04-11T12:13:44.378Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 33935,
+            "name": "across wait debate",
+            "description": "Trial but treat discussion present run identify. Give impact despite similar.",
+            "genreId": 5,
+            "imageUrl": "https://picsum.photos/200/200",
+            "price": 783,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-04-12T15:05:19.832Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 33982,
+            "name": "system become nor",
+            "description": "Able phone company state approach. Vote three teach blood Democrat.",
+            "genreId": 5,
+            "imageUrl": "https://dummyimage.com/200x200",
+            "price": 948,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-04-12T16:33:19.682Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 42980,
+            "name": "Information",
+            "description": "Citizen leader hour yeah above animal.",
+            "genreId": 5,
+            "imageUrl": "https://picsum.photos/316/766",
+            "price": 780,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-04-28T13:00:47.041Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 45361,
+            "name": "Might start continue.",
+            "description": "Behind item according provide. Score else those Mr. Forward father employee model majority send natural.\nHeart send soon in natural. Newspaper laugh power out idea summer assume.",
+            "genreId": 5,
+            "imageUrl": "https://dummyimage.com/828x269",
+            "price": 597,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-05-04T17:35:15.386Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 48291,
+            "name": "9817 Долматинцев",
+            "description": "ТЕСТТЕСТЕСТЕТСТЕСТЕСТ",
+            "genreId": 5,
+            "imageUrl": "https://image.url",
+            "price": 646,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-05-14T12:47:37.135Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 48894,
+            "name": "Maintain decade yet.",
+            "description": "Same financial point late. Child poor recently card town drug.",
+            "genreId": 5,
+            "imageUrl": "https://placekittens.com/820/858",
+            "price": 870,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-05-17T13:02:33.420Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 49338,
+            "name": "2224 Долматинцев",
+            "description": "ТЕСТТЕСТЕСТЕТСТЕСТЕСТ",
+            "genreId": 5,
+            "imageUrl": "https://image.url",
+            "price": 914,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-05-18T18:52:17.836Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        },
+        {
+            "id": 49390,
+            "name": "Maxwell Peters",
+            "description": "Professional from feel reach. Million wait know large street investment plant action. Pick citizen add agent law leave challenge.",
+            "genreId": 5,
+            "imageUrl": "https://image.url",
+            "price": 759,
+            "rating": 0,
+            "location": "SPB",
+            "published": true,
+            "createdAt": "2026-05-19T11:13:04.632Z",
+            "genre": {
+                "name": "Боевик"
+            }
+        }
+    ],
+    "count": 31,
+    "page": 1,
+    "pageSize": 10,
+    "pageCount": 4
+}
+================================================================================

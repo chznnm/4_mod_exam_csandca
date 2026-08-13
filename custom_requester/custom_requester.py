@@ -1,6 +1,8 @@
 import json
 import logging
 import os
+from pydantic import BaseModel
+from constants.constants import GREEN,RED,RESET
 
 
 class CustomRequester:
@@ -18,6 +20,8 @@ class CustomRequester:
 
     def send_request(self, method, endpoint, data=None, params=None, expected_status=200, need_logging=True, **kwargs):
         url = f"{self.base_url}{endpoint}"
+        if isinstance(data, BaseModel):
+            data = json.loads(data.model_dump_json(exclude_unset=True))
         response = self.session.request(method, url, json=data, params=params, **kwargs)
 
         if need_logging:
@@ -40,9 +44,6 @@ class CustomRequester:
     def log_request_and_response(self, response):
         try:
             request = response.request
-            GREEN = '\033[32m'
-            RED = '\033[31m'
-            RESET = '\033[0m'
 
             full_test_name = f"pytest {os.environ.get('PYTEST_CURRENT_TEST', '').replace(' (call)', '')}"
             headers = " \\\n".join([f"-H '{header}: {value}'" for header, value in request.headers.items()])

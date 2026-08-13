@@ -1,0 +1,56 @@
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[common_user-403] (setup)[0m
+curl -X POST 'https://auth.dev-cinescope.coconutqa.ru/login' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'Content-Length: 53' \
+-d '{"email": "api1@gmail.com", "password": "asdqwe123Q"}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [32m200[0m
+	DATA:
+{
+    "user": {
+        "id": "fff72b8b-6071-46a3-b6c5-bf2cc5f78718",
+        "email": "api1@gmail.com",
+        "fullName": "Antonio Carpenter",
+        "createdAt": "2026-07-29T14:41:41.311Z",
+        "verified": true,
+        "banned": false,
+        "roles": [
+            "USER",
+            "ADMIN",
+            "SUPER_ADMIN"
+        ]
+    },
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDUyLCJleHAiOjE3ODYyMTg4NTJ9.B_Du6-GKo7jtypp9wxYBljVbLFU2nVf88bBBXPeHbCk",
+    "expiresIn": 1786218852620
+}
+================================================================================
+
+
+======================================== REQUEST ========================================
+[32mpytest tests/api/test_movies.py::TestMoviesSuccessful::test_delete_movie_by_id[common_user-403] (setup)[0m
+curl -X POST 'https://api.dev-cinescope.coconutqa.ru/movies' \
+-H 'User-Agent: python-requests/2.31.0' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Accept: application/json' \
+-H 'Connection: keep-alive' \
+-H 'Content-Type: application/json' \
+-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZmZjcyYjhiLTYwNzEtNDZhMy1iNmM1LWJmMmNjNWY3ODcxOCIsImVtYWlsIjoiYXBpMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iLCJTVVBFUl9BRE1JTiJdLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzg2MjE3MDUyLCJleHAiOjE3ODYyMTg4NTJ9.B_Du6-GKo7jtypp9wxYBljVbLFU2nVf88bBBXPeHbCk' \
+-H 'Content-Length: 486' \
+-d '{"name": "\u041f\u043e\u044f\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u0438\u0441\u0435\u0441\u0442\u044c.", "imageUrl": "http://www.npf.net/", "price": 511, "description": "\u042d\u043a\u0441\u043a\u043b\u044e\u0437\u0438\u0432\u043d\u0430\u044f \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u0430\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430", "location": "SPB", "published": false, "genreId": 2}' 
+
+
+======================================== RESPONSE ========================================
+	STATUS_CODE: [31m400[0m
+	DATA: [31m{
+    "message": "Некорректные данные",
+    "error": "Bad Request",
+    "statusCode": 400
+}[0m
+================================================================================

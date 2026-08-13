@@ -16,10 +16,19 @@ class UserApi(CustomRequester):
             **kwargs
         )
 
-    def delete_user(self, user_id, expected_status=200, **kwargs):
+    def create_user(self, user_data, expected_status=201,**kwargs):
         return self.send_request(
-            method="DELETE",
+            method="POST",
+            endpoint=USER,
+            data=user_data,
+            expected_status=expected_status
+        )
+
+    def edit_user(self,user_id,data,expected_status=200,**kwargs):
+        return self.send_request(
+            method="PATCH",
             endpoint=f"{USER}/{user_id}",
+            data=data,
             expected_status=expected_status,
             **kwargs
         )
