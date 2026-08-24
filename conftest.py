@@ -2,6 +2,8 @@ import requests
 import pytest
 from clients.api_manager import ApiManager
 from constants.roles import Roles
+from pages.login_page import CinescopeLoginPage
+from pages.all_movies_page import AllMoviesBasePage
 from utils.data_generator import DataGenerator
 from resources.user_creds import SuperAdminCreds
 from entities.user import User
@@ -9,6 +11,12 @@ from models.base_models import TestUser, RegisterUserResponse
 from sqlalchemy.orm import Session
 from db_requester.db_client import get_db_session
 from db_requester.db_helpers import DBHelper
+from pages.playwright_tools import  Tools
+DEFAULT_UI_TIMEOUT = 30000
+from pages.register_page import CinescopeRegisterPage
+from playwright.sync_api import Page
+from pages.base_page import BasePage
+from pages.movie_page import MovieBasePage
 
 @pytest.fixture(scope="session")
 def session():
@@ -200,3 +208,51 @@ def created_test_user(db_helper):
     # Cleanup после теста
     if db_helper.get_user_by_id(user.id):
         db_helper.delete_user(user)
+
+@pytest.fixture(scope="session")
+def browser(playwright):
+    browser = playwright.chromium.launch(headless=False, slow_mo=50)
+    yield browser
+    browser.close()
+
+@pytest.fixture(scope="function")
+def context(browser):
+    context = browser.new_context()
+    context.tracing.start(screenshots=True, snapshots=True, sources=True)  # Трассировка для отладки
+    context.set_default_timeout(DEFAULT_UI_TIMEOUT)
+    yield context
+    log_name = f"trace_{Tools.get_timestamp()}.zip"
+    trace_path = Tools.files_dir('playwright_trace', log_name)
+    context.tracing.stop(path=trace_path)
+    context.close()
+
+@pytest.fixture(scope="function")
+def page(context):
+    page = context.new_page()
+    yield page
+    page.close()
+
+@pytest.fixture
+def register_page(page: Page) -> CinescopeRegisterPage:
+    register_page = CinescopeRegisterPage(page)
+    return register_page
+
+@pytest.fixture
+def login_page(page: Page) -> CinescopeLoginPage:
+    login_page = CinescopeLoginPage(page)
+    return login_page
+
+@pytest.fixture
+def all_movies_page(page: Page) -> AllMoviesBasePage:
+    all_movies_page = AllMoviesBasePage(page)
+    return all_movies_page
+
+@pytest.fixture
+def base_page(page: Page) -> BasePage:
+    base_page = BasePage(page)
+    return base_page
+
+@pytest.fixture
+def movie_page(page: Page) -> MovieBasePage:
+    movie_page = MovieBasePage(page)
+    return movie_page
